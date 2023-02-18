@@ -9,10 +9,10 @@ lerna-debug.log*
 
 node_modules
 dist
-dist-electron
 release
 *.local
 .env
+/coverage
 
 # Editor directories and files
 .vscode/.debug.env

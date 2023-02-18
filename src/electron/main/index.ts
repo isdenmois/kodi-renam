@@ -1,5 +1,6 @@
 import { app, BrowserWindow, shell, ipcMain } from 'electron'
 import { join } from 'node:path'
+import storage from 'electron-json-storage'
 
 process.env.DIST_ELECTRON = join(__dirname, '..')
 process.env.DIST = join(process.env.DIST_ELECTRON, '../')
@@ -32,6 +33,7 @@ function createWindow() {
       // Read more on https://www.electronjs.org/docs/latest/tutorial/context-isolation
       nodeIntegration: true,
       contextIsolation: false,
+      webSecurity: false,
     },
     autoHideMenuBar: true,
     width: import.meta.env.DEV ? 1600 : 1000,
@@ -92,4 +94,11 @@ ipcMain.handle('open-win', (_, arg: string) => {
   } else {
     void childWindow.loadFile(indexHtml, { hash: arg })
   }
+})
+
+ipcMain.handle('storage/get', (_, key: string): unknown => storage.getSync(key))
+
+ipcMain.handle('storage/set', (_, key: string, value: object) => {
+  // eslint-disable-next-line @typescript-eslint/no-empty-function
+  storage.set(key, value, () => {})
 })

@@ -6,3 +6,4 @@ patches
 # Ignore artifacts:
 dist
 release
+/coverage
