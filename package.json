@@ -67,6 +67,7 @@
     "zod": "3.20.6"
   },
   "simple-git-hooks": {
-    "pre-commit": "npx pretty-quick --staged"
+    "pre-commit": "npx pretty-quick --staged",
+    "pre-push": "npm run check"
   }
 }
