@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "melihaltintas.svelte-format",
+    "svelte.svelte-vscode",
+    "editorconfig.editorconfig",
+    "mrmlnc.vscode-json5",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "antfu.unocss",
+    "zixuanchen.vitest-explorer",
+    "bradlc.vscode-tailwindcss"
+  ]
+}

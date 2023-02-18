@@ -1,0 +1,66 @@
+{
+  "name": "kodi-renam",
+  "version": "0.0.1",
+  "main": "dist/electron/main/index.js",
+  "description": "Rename series in kodi format",
+  "author": "Denis Moiseev <isdenmois@gmail.com>",
+  "license": "WTFPL",
+  "private": true,
+  "keywords": [
+    "electron",
+    "vite",
+    "svelte"
+  ],
+  "debug": {
+    "env": {
+      "VITE_DEV_SERVER_URL": "http://127.0.0.1:3344/"
+    }
+  },
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build && electron-builder --win",
+    "build:linux": "vite build && electron-builder --linux",
+    "preview": "vite preview",
+    "format": "prettier --plugin=./node_modules/prettier-plugin-svelte --check .",
+    "format-fix": "prettier --plugin=./node_modules/prettier-plugin-svelte --write .",
+    "check": "npm run lint && npm run test && svelte-check --tsconfig ./tsconfig.json",
+    "test": "vitest run",
+    "lint": "eslint ."
+  },
+  "devDependencies": {
+    "@sveltejs/vite-plugin-svelte": "2.0.2",
+    "@testing-library/jest-dom": "5.16.5",
+    "@testing-library/svelte": "3.2.2",
+    "@tsconfig/svelte": "3.0.0",
+    "@types/testing-library__jest-dom": "5.14.5",
+    "@typescript-eslint/eslint-plugin": "5.52.0",
+    "@typescript-eslint/parser": "5.52.0",
+    "@unocss/reset": "0.49.7",
+    "electron": "23.1.0",
+    "electron-builder": "23.6.0",
+    "eslint": "8.34.0",
+    "eslint-plugin-svelte3": "4.0.0",
+    "jsdom": "21.1.0",
+    "lint-staged": "13.1.2",
+    "prettier": "2.8.4",
+    "prettier-plugin-svelte": "2.9.0",
+    "pretty-quick": "3.1.3",
+    "simple-git-hooks": "2.8.1",
+    "svelte": "3.55.1",
+    "svelte-check": "3.0.3",
+    "tslib": "2.5.0",
+    "typescript": "4.9.5",
+    "unocss": "0.49.7",
+    "vite": "4.1.2",
+    "vite-plugin-electron": "0.11.1",
+    "vite-plugin-electron-renderer": "0.12.1",
+    "vitest": "0.28.5"
+  },
+  "dependencies": {
+    "nanostores": "0.7.4",
+    "zod": "3.20.6"
+  },
+  "simple-git-hooks": {
+    "pre-commit": "npx pretty-quick --staged"
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "svelte.plugin.svelte.format.enable": true,
+  "svelte.plugin.svelte.format.config.printWidth": 120,
+  "svelte.plugin.svelte.format.config.singleQuote": true,
+  "svelte.plugin.svelte.format.config.svelteSortOrder": "options-scripts-markup-styles",
+  "svelte.plugin.svelte.format.config.svelteAllowShorthand": true,
+  "[svelte]": {
+    "editor.defaultFormatter": "svelte.svelte-vscode"
+  },
+  "typescript.tsdk": "node_modules/typescript/lib",
+  "typescript.tsc.autoDetect": "off",
+  "json.schemas": [
+    {
+      "fileMatch": ["/*electron-builder.json5", "/*electron-builder.json"],
+      "url": "https://json.schemastore.org/electron-builder"
+    }
+  ],
+  "folderTemplates.templateFolderPath": ".vscode/templates",
+  "typescript.suggest.paths": false,
+  "javascript.suggest.paths": false
+}
