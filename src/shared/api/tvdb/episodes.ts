@@ -8,6 +8,7 @@ const episodeSchema = z.object({
   episodeName: z.string().default('Untitled episode'),
   filename: z.string().transform(filename => (filename ? `${BANNER_PREFIX}/${filename}` : null)),
   siteRating: z.number().optional(),
+  airedEpisodeNumber: z.number(),
 })
 
 export type Episode = z.infer<typeof episodeSchema>

@@ -5,7 +5,7 @@ const searchItemSchema = z.object({
   id: z.coerce.number(),
   image: z.string().optional(),
   seriesName: z.string(),
-  overview: z.string(),
+  overview: z.string().optional(),
   firstAired: z
     .string()
     .optional()
