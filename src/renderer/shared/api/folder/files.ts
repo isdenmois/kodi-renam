@@ -43,6 +43,6 @@ const filesSchema = z.array(fileSchema)
 export const files = async (hash: string): Promise<QFile[]> =>
   api
     .query({ hash })
-    .get('/api/v2/torrents/files')
+    .get('/torrents/files')
     .json()
     .then((data: unknown) => filesSchema.parse(data))

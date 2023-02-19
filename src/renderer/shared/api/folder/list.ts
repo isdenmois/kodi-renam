@@ -15,7 +15,7 @@ export type Folder = z.infer<typeof folderSchema>
 const foldersSchema = z.array(folderSchema)
 
 export const list = async (): Promise<Folder[]> => {
-  const list = await api.url('/api/v2/torrents/info').get().json()
+  const list = await api.url('/torrents/info').get().json()
 
   const folders = foldersSchema.parse(list)
 
