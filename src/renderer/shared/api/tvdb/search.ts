@@ -1,11 +1,17 @@
 import { z } from 'zod'
 import { api } from './api'
 
+const IMAGE_PREFIX = 'https://artworks.thetvdb.com'
+
 const searchItemSchema = z.object({
   id: z.coerce.number(),
-  image: z.string().optional(),
+  image: z
+    .string()
+    .optional()
+    .transform(image => (image ? `${IMAGE_PREFIX}${image}` : null)),
   seriesName: z.string(),
   overview: z.string().optional(),
+  network: z.string().nullish(),
   firstAired: z
     .string()
     .optional()
