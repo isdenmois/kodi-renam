@@ -1,11 +1,16 @@
 <script lang="ts">
-  import { series$, SeriesCard } from 'entities/series'
+  import type { SearchItem } from 'shared/api'
+  import { series$, selectedSeries$, SeriesCard } from 'entities/series'
   import { isSearching$, search } from 'features/series-search'
 
   let query = ''
 
   const searchSeries = async () => {
     search(query)
+  }
+
+  const selectSeries = (series: SearchItem) => {
+    selectedSeries$.set(series)
   }
 </script>
 
@@ -21,7 +26,10 @@
   {#if $series$?.length}
     <ul>
       {#each $series$ as item}
-        <li><SeriesCard series={item} /></li>
+        <!-- svelte-ignore a11y-click-events-have-key-events -->
+        <li on:click={() => selectSeries(item)}>
+          <SeriesCard series={item} />
+        </li>
       {/each}
     </ul>
   {/if}
