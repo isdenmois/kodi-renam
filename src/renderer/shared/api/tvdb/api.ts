@@ -12,5 +12,6 @@ const parseResponse = (response: unknown) => {
 
 export const api = wretch('https://api.thetvdb.com/')
   .addon(QueryAddon)
+  .headers({ 'Accept-Language': 'en' })
   .middlewares([authMiddleware])
   .resolve(r => r.json().then(parseResponse))
