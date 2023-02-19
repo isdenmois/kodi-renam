@@ -5,7 +5,7 @@ import type { JwtPayload } from 'jwt-decode'
 import { env, storage } from 'shared/lib'
 
 const getToken = async (): Promise<string | null> => {
-  const { token } = await storage.get<{ token?: string }>('token')
+  const token = await storage.get<string>('token')
 
   if (token) {
     const expiration = token ? jwt<JwtPayload>(token).exp ?? 0 : 0
@@ -19,7 +19,7 @@ const getToken = async (): Promise<string | null> => {
 }
 
 const setToken = async (token: string): Promise<void> => {
-  storage.set('token', { token })
+  storage.set('token', token)
 }
 
 const login = () =>

@@ -1,16 +1,20 @@
 module.exports = {
   parser: '@typescript-eslint/parser',
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended',
+    'plugin:@typescript-eslint/eslint-recommended',
+  ],
   parserOptions: {
     ecmaVersion: 2022,
     sourceType: 'module',
-    tsconfigRootDir: __dirname,
-    project: ['./tsconfig.json'],
     extraFileExtensions: ['.svelte'],
   },
   env: {
-    es6: true,
     browser: true,
+    commonjs: true,
+    es6: true,
+    node: true,
   },
   overrides: [
     {
@@ -25,7 +29,6 @@ module.exports = {
     'svelte3/ignore-styles': () => true,
   },
   plugins: ['svelte3', '@typescript-eslint'],
-  ignorePatterns: ['node_modules'],
   rules: {
     '@typescript-eslint/no-unused-vars': 'error',
   },

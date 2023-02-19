@@ -1,21 +1,17 @@
 {
-  "extends": "@tsconfig/svelte/tsconfig.json",
+  "extends": "@electron-toolkit/tsconfig/tsconfig.json",
+  "include": ["src/renderer/env.d.ts", "src/renderer/**/*", "src/renderer/**/*.svelte", "src/preload/*.d.ts"],
   "compilerOptions": {
-    "target": "ESNext",
+    "importsNotUsedAsValues": "error",
+    "preserveValueImports": true,
     "useDefineForClassFields": true,
-    "module": "ESNext",
-    "moduleResolution": "Node",
-    "strict": true,
-    "resolveJsonModule": true,
-    "isolatedModules": true,
-    "esModuleInterop": true,
-    "lib": ["ESNext", "DOM"],
-    "skipLibCheck": true,
-    "noEmit": true,
+    "strict": false,
+    "allowJs": true,
+    "checkJs": true,
+    "lib": ["ESNext", "DOM", "DOM.Iterable"],
     "paths": {
-      "*": ["./src/*"]
+      "*": ["./src/renderer/*"]
     }
   },
-  "include": ["src/**/*.d.ts", "src/**/*.ts", "src/**/*.js", "src/**/*.svelte", "src/electron/**/*.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
 }

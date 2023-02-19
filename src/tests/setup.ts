@@ -9,4 +9,10 @@ declare global {
   }
 }
 
+window.electron = {
+  ipcRenderer: {
+    invoke: () => null,
+  },
+}
+
 expect.extend(matchers)

@@ -1,14 +1,9 @@
 import { afterEach, describe, expect, test, vi } from 'vitest'
-import { ipcRenderer } from 'electron'
 import { get, set } from './storage'
 
-vi.mock('electron', () => {
-  const ipcRenderer = {
-    invoke: vi.fn(() => Promise.resolve({ token: 'test' })),
-  }
+const { ipcRenderer } = window.electron
 
-  return { ipcRenderer }
-})
+vi.spyOn(ipcRenderer, 'invoke').mockResolvedValue({ token: 'test' })
 
 describe('Storage', () => {
   afterEach(() => {
