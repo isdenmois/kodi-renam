@@ -5,7 +5,10 @@ const BANNER_PREFIX = 'https://artworks.thetvdb.com/banners'
 
 const episodeSchema = z.object({
   id: z.coerce.number(),
-  episodeName: z.string().default('Untitled episode'),
+  episodeName: z
+    .string()
+    .nullish()
+    .transform(episodeName => episodeName || 'Untitled episode'),
   filename: z.string().transform(filename => (filename ? `${BANNER_PREFIX}/${filename}` : null)),
   siteRating: z.number().optional(),
   airedEpisodeNumber: z.number(),
