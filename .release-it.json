@@ -1,0 +1,24 @@
+{
+  "hooks": {
+    "before:init": "npm run check",
+    "after:bump": "npm run build:win",
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "git": {
+    "commitMessage": "v${version}",
+    "tagName": "v${version}"
+  },
+  "npm": {
+    "publish": false
+  },
+  "github": {
+    "release": true,
+    "releaseName": "v${version}",
+    "assets": ["dist/*-${version}-setup.exe"]
+  },
+  "plugins": {
+    "@release-it/conventional-changelog": {
+      "preset": "angular"
+    }
+  }
+}
