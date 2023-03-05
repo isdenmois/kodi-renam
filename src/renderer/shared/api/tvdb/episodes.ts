@@ -18,8 +18,9 @@ export type Episode = z.infer<typeof episodeSchema>
 
 const episodesSchema = z.array(episodeSchema)
 
-export const episodes = (id: number, airedSeason: number) =>
+export const episodes = (id: number, airedSeason: number, language: string) =>
   api
     .query({ airedSeason })
+    .headers({ 'Accept-Language': language })
     .get(`series/${id}/episodes/query`)
     .then((data: unknown) => episodesSchema.parse(data))

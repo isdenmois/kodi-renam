@@ -3,8 +3,13 @@
   import { series$, selectedSeries$, SeriesCard } from 'entities/series'
   import { isSearching$, search } from 'features/series-search'
   import { openSettings } from 'entities/settings'
+  import { language$ } from 'entities/language'
 
   let query = ''
+
+  let languageSelect: HTMLSelectElement
+
+  const handleLanguageSelect = () => language$.set(languageSelect.value)
 
   const searchSeries = async () => {
     search(query)
@@ -18,6 +23,12 @@
 <main>
   <form on:submit|preventDefault={searchSeries}>
     <input type="text" bind:value={query} placeholder="Search a series" />
+
+    <select bind:this={languageSelect} value={$language$} on:change={handleLanguageSelect}>
+      <option value="" disabled>Language</option>
+      <option value="en">English</option>
+      <option value="ru">Русский</option>
+    </select>
   </form>
 
   {#if $isSearching$}
@@ -54,8 +65,8 @@
     align-self: center;
     flex: 1;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
+    gap: 16px;
     margin-top: 16px;
   }
   ul {

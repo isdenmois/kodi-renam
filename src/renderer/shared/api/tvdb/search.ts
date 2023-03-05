@@ -22,8 +22,9 @@ export type SearchItem = z.infer<typeof searchItemSchema>
 
 const searchSchema = z.array(searchItemSchema)
 
-export const search = (name: string) =>
+export const search = (name: string, language: string) =>
   api
     .query({ name })
+    .headers({ 'Accept-Language': language })
     .get('search/series')
     .then((data: unknown) => searchSchema.parse(data))
