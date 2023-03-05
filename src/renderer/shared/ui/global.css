@@ -32,7 +32,8 @@ body {
   overflow: hidden;
 }
 
-input[type='text'] {
+input[type='text'],
+input[type='number'] {
   border: none;
   background-color: var(--input-background);
   padding: 12px 24px;
@@ -66,4 +67,8 @@ input[type='text'] {
 
 ::-webkit-scrollbar-thumb:hover {
   background-color: var(--secondary-text);
+}
+
+.hidden {
+  display: none;
 }

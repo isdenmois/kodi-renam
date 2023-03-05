@@ -2,6 +2,7 @@
   import type { SearchItem } from 'shared/api'
   import { series$, selectedSeries$, SeriesCard } from 'entities/series'
   import { isSearching$, search } from 'features/series-search'
+  import { openSettings } from 'entities/settings'
 
   let query = ''
 
@@ -32,6 +33,10 @@
         </li>
       {/each}
     </ul>
+  {:else}
+    <footer>
+      <button on:click={openSettings}>Settings</button>
+    </footer>
   {/if}
 </main>
 
@@ -40,7 +45,6 @@
     display: flex;
     flex-direction: column;
     flex: 1;
-    padding: 16px;
     overflow: hidden;
   }
   input {
@@ -52,6 +56,7 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
+    margin-top: 16px;
   }
   ul {
     flex: 100;
@@ -60,6 +65,7 @@
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
+    padding: 16px;
     gap: 16px;
   }
 </style>

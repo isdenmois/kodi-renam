@@ -22,5 +22,3 @@ export const refreshFolders = async () => {
 
   folders$.set(folders)
 }
-
-refreshFolders()

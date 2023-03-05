@@ -28,10 +28,10 @@
   {/each}
 </ul>
 
-<div class="footer">
+<footer>
   <button on:click={cancel}>Cancel</button>
-  <button class="active" disabled={$isRenaming$} on:click={startProcess}> Rename </button>
-</div>
+  <button class="primary" disabled={$isRenaming$} on:click={startProcess}> Rename </button>
+</footer>
 
 <style>
   ul {
@@ -51,40 +51,5 @@
     flex-direction: row;
     align-items: center;
     gap: 8px;
-  }
-
-  .footer {
-    border-top: 1px solid #f6f6f6;
-    padding: 16px;
-    display: flex;
-    flex-direction: row;
-    justify-content: flex-end;
-    gap: 16px;
-  }
-
-  .footer button {
-    all: unset;
-    cursor: pointer;
-    font-size: 18px;
-    color: #424554;
-    padding: 12px 32px;
-    border-radius: 8px;
-  }
-
-  .footer button:hover {
-    background-color: #f0f1f7;
-  }
-
-  .footer button.active {
-    background-color: #549cf8;
-    color: white;
-  }
-
-  .footer button.active:hover {
-    background-color: #80b6fa;
-  }
-
-  .footer button:disabled {
-    opacity: 0.5;
   }
 </style>
