@@ -33,6 +33,7 @@ const fileSchema = z
       episode: +episode || -1,
       season: +season || -1,
       title: filename,
+      skip: false,
     }
   })
 

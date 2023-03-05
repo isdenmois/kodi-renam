@@ -13,7 +13,7 @@
   }
 
   const startProcess = async () => {
-    await renameFiles(files)
+    await renameFiles(files.filter(file => !file.skip))
 
     selectedSeries$.set(null)
     cancel()
