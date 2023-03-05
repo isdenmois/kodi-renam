@@ -24,10 +24,10 @@ export const renameFiles = async (files: QFile[]) => {
   isRenaming$.set(true)
 
   for (const file of files) {
-    if (file.title && file.title !== file.filename) {
-      const from = `${file.directory}/${file.filename}`
-      const to = getFileDestination(file, seriesName)
+    const from = `${file.directory}/${file.filename}`
+    const to = getFileDestination(file, seriesName)
 
+    if (from !== to) {
       await folderAPI.rename(hash, from, to)
     }
   }
