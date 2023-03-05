@@ -1,11 +1,17 @@
 <script lang="ts">
   import { closeSettings, settings$, updateSettings } from 'entities/settings'
+  import { Categories } from 'entities/folder'
   import { Input } from 'shared/ui'
 
   const settings = settings$.get()
 
   let port = String(settings.port)
   let token = settings.token
+  let category = settings.category
+
+  const handleCategorySelect = (event: CustomEvent<string | null>) => {
+    category = event.detail
+  }
 
   const save = async () => {
     if (+port > 65535) {
@@ -15,6 +21,7 @@
     updateSettings({
       port: +port || settings.port,
       token: token || settings.token,
+      category,
     })
     closeSettings()
   }
@@ -27,6 +34,11 @@
     <div class="h-4" />
 
     <Input label="TVDB token" bind:value={token} />
+
+    <div class="mt-4">
+      <h5>Default category</h5>
+      <Categories selectedCategory={category} on:select={handleCategorySelect} />
+    </div>
 
     <button class="hidden" type="submit" />
   </form>
@@ -41,5 +53,10 @@
   main {
     flex: 1;
     padding: 16px;
+  }
+
+  h5 {
+    margin-top: 0;
+    margin-bottom: 8px;
   }
 </style>

@@ -1,12 +1,18 @@
 <script lang="ts">
   import { selectedSeries$ } from 'entities/series'
-  import { Categories, FoldersList, refreshFolders } from 'entities/folder'
+  import { Categories, FoldersList, refreshFolders, selectedCategory$ } from 'entities/folder'
+  import { settings$ } from 'entities/settings'
 
   const series = selectedSeries$.get()
+  const settings = settings$.get()
 
-  refreshFolders()
+  if (settings.category) {
+    selectedCategory$.set(settings.category)
+  }
 
   const close = () => selectedSeries$.set(null)
+
+  refreshFolders()
 </script>
 
 <main>
@@ -20,7 +26,9 @@
     </div>
   </div>
 
-  <Categories />
+  <div class="mt-4">
+    <Categories selectedCategory={$selectedCategory$} on:select={event => selectedCategory$.set(event.detail)} />
+  </div>
   <FoldersList />
 </main>
 

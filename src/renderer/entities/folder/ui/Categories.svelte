@@ -1,19 +1,20 @@
 <script lang="ts">
-  import { categories$, selectedCategory$ } from '../model'
+  import { createEventDispatcher } from 'svelte'
+  import { categories$ } from '../model'
+
+  export let selectedCategory: string
+
+  const dispatch = createEventDispatcher<{ select: string | null }>()
 
   const select = (category: string) => {
-    if (selectedCategory$.get() === category) {
-      selectedCategory$.set(null)
-    } else {
-      selectedCategory$.set(category)
-    }
+    dispatch('select', category === selectedCategory ? null : category)
   }
 </script>
 
 <ul>
   {#each $categories$ as category}
     <!-- svelte-ignore a11y-click-events-have-key-events -->
-    <li class="item" class:selected={$selectedCategory$ === category} on:click={() => select(category)}>
+    <li class="item" class:selected={category === selectedCategory} on:click={() => select(category)}>
       {category}
     </li>
   {/each}
@@ -26,7 +27,8 @@
     overflow-x: auto;
     overscroll-behavior: contain;
     gap: 16px;
-    padding: 8px 16px;
+    padding: 0;
+    margin: 0;
     flex-wrap: wrap;
     list-style-type: none;
   }

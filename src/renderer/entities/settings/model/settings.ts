@@ -5,6 +5,7 @@ import { z } from 'zod'
 const settingsSchema = z.object({
   port: z.coerce.number().min(1).max(65535),
   token: z.string(),
+  category: z.string().optional().nullable(),
 })
 
 type Settings = z.infer<typeof settingsSchema>
