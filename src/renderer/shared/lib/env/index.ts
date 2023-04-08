@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const schema = z.object({
-  PROD: z.boolean(),
+  PROD: z.coerce.boolean(),
   VITE_TVDB_TOKEN: z.string().min(1),
   VITE_DEFAULT_PORT: z.coerce.number().min(1),
   VITE_GITHUB_REPO: z.string(),
