@@ -26,6 +26,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.node.json --composite false",
     "test": "vitest run",
     "test:coverage": "vitest run --coverage",
+    "test:watch": "vitest",
     "lint": "eslint ."
   },
   "dependencies": {
