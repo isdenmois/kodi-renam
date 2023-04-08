@@ -1,10 +1,12 @@
 import '@unocss/reset/normalize.css'
-import 'virtual:uno.css'
 import 'shared/ui'
-import { setPort } from 'shared/api/folder/api'
-import { setApiKey } from 'shared/api/tvdb/auth'
+import 'virtual:uno.css'
 import { refreshFolders } from 'entities/folder'
 import { loadSettings, settings$ } from 'entities/settings'
+import { checkForUpdate } from 'features/update'
+import { setPort } from 'shared/api/folder/api'
+import { setApiKey } from 'shared/api/tvdb/auth'
+import { env } from 'shared/lib'
 import App from './App.svelte'
 
 const app = new App({
@@ -19,5 +21,9 @@ loadSettings().then(() => {
     refreshFolders()
   })
 })
+
+if (env.isProd) {
+  checkForUpdate()
+}
 
 export default app

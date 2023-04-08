@@ -1,4 +1,4 @@
-import { app, ipcMain, shell, BrowserWindow } from 'electron'
+import { app, ipcMain, shell, BrowserWindow, dialog } from 'electron'
 import { join } from 'path'
 import { electronApp, optimizer, is } from '@electron-toolkit/utils'
 import Store from 'electron-store'
@@ -80,4 +80,23 @@ ipcMain.handle('storage/get', (_, key: string): unknown => {
 
 ipcMain.handle('storage/set', (_, key: string, value: unknown) => {
   store.set(key, value)
+})
+
+interface UpdateParams {
+  title: string
+  message: string
+  url: string
+}
+
+ipcMain.handle('version/update', (_, release: UpdateParams) => {
+  const button = dialog.showMessageBoxSync({
+    type: 'info',
+    title: release.title,
+    message: release.message,
+    buttons: ['Yes', 'No'],
+  })
+
+  if (button === 0) {
+    shell.openExternal(release.url)
+  }
 })

@@ -31,5 +31,8 @@ export default defineConfig({
       },
     },
     envPrefix: 'VITE_',
+    define: {
+      APP_VERSION: JSON.stringify(`v${process.env.npm_package_version}`),
+    },
   },
 })
