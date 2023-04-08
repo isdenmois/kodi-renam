@@ -1,4 +1,4 @@
-import { splitFilename } from './split-filename'
+import { splitFilename } from 'shared/lib'
 
 const NON_VALID_CHARACTERS = /[<>:"/\\|?*\u0000-\u001F]/g // eslint-disable-line no-control-regex
 const MAX_FILENAME_LENGTH = 100

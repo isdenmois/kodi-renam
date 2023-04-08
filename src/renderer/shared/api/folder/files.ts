@@ -1,4 +1,5 @@
 import { z } from 'zod'
+import { splitPath } from 'shared/lib'
 import { api } from './api'
 
 const REG_EXP = [/S(\d+)E(\d+)/i, /^()(\d+)\./i, /S(\d+).*[E/](\d+)/i]
@@ -21,9 +22,7 @@ const fileSchema = z
     size: z.number(),
   })
   .transform(file => {
-    const slashIndex = file.name.lastIndexOf('/')
-    const directory = slashIndex > 0 ? file.name.slice(0, slashIndex) : null
-    const filename = file.name.slice(slashIndex + 1)
+    const [directory, filename] = splitPath(file.name)
     const { season, episode } = parseSeasonEndEpisode(filename) || parseSeasonEndEpisode(file.name) || {}
 
     return {
