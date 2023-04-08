@@ -1,5 +1,6 @@
 import wretch from 'wretch'
 import QueryAddon from 'wretch/addons/queryString'
+import { logMiddleware } from 'shared/lib'
 import { authMiddleware } from './auth'
 
 const parseResponse = (response: unknown) => {
@@ -12,5 +13,5 @@ const parseResponse = (response: unknown) => {
 
 export const api = wretch('https://api.thetvdb.com/')
   .addon(QueryAddon)
-  .middlewares([authMiddleware])
+  .middlewares([authMiddleware, logMiddleware])
   .resolve(r => r.json().then(parseResponse))

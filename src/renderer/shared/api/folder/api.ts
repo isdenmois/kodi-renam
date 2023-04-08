@@ -1,7 +1,7 @@
 import wretch, { type FetchLike } from 'wretch'
 import QueryAddon from 'wretch/addons/queryString'
 import FormUrlAddon from 'wretch/addons/formUrl'
-import { env } from 'shared/lib'
+import { env, logMiddleware } from 'shared/lib'
 
 let port = env.defaultPort
 
@@ -18,6 +18,6 @@ const portMiddleware =
 export const api = wretch()
   .url('http://localhost:{{port}}/api/v2')
   .options({ cache: 'no-store' })
-  .middlewares([portMiddleware])
+  .middlewares([portMiddleware, logMiddleware])
   .addon(QueryAddon)
   .addon(FormUrlAddon)
