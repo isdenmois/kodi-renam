@@ -19,4 +19,7 @@ export default defineConfig(() => ({
       shared: resolve(__dirname, 'src/renderer/shared'),
     },
   },
+  define: {
+    'import.meta.env.PACKAGE_VERSION': JSON.stringify(`v${process.env.npm_package_version}`),
+  },
 }))

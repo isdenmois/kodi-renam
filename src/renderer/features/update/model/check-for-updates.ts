@@ -1,4 +1,5 @@
 import { githubAPI } from 'shared/api'
+import { env } from 'shared/lib'
 
 interface UpdateParams {
   title: string
@@ -11,7 +12,7 @@ const updateVersion = (params: UpdateParams) => window.electron.ipcRenderer.invo
 export const checkForUpdate = async () => {
   const release = await githubAPI.latestRelease()
 
-  if (release.tag_name !== window.APP_VERSION) {
+  if (release.tag_name !== env.appVersion) {
     const date = release.created_at.toLocaleDateString('ru-RU')
 
     updateVersion({
