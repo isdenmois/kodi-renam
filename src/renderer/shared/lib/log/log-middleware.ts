@@ -22,9 +22,9 @@ const logError = async (url: string, opts: WretchOptions, response: WretchRespon
 
 export function logMiddleware(next: FetchLike): FetchLike {
   return (url, opts) => {
-    return next(url, opts).then(response => {
+    return next(url, opts).then(async response => {
       if (!response.ok) {
-        logError(url, opts, response.clone())
+        await logError(url, opts, response.clone())
       }
 
       return response

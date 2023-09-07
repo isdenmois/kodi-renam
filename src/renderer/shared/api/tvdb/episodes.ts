@@ -9,8 +9,11 @@ const episodeSchema = z.object({
     .string()
     .nullish()
     .transform(episodeName => episodeName || 'Untitled episode'),
-  filename: z.string().transform(filename => (filename ? `${BANNER_PREFIX}/${filename}` : null)),
-  siteRating: z.number().optional(),
+  filename: z
+    .string()
+    .nullish()
+    .transform(filename => (filename ? `${BANNER_PREFIX}/${filename}` : null)),
+  siteRating: z.number().nullish(),
   airedEpisodeNumber: z.number(),
 })
 
