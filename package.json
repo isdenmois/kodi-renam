@@ -1,6 +1,6 @@
 {
   "name": "kodi-renam",
-  "version": "0.8.2",
+  "version": "0.8.3",
   "main": "./out/main/index.js",
   "description": "Rename series in kodi format",
   "author": "Denis Moiseev <isdenmois@gmail.com>",
